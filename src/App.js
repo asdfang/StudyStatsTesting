@@ -81,7 +81,7 @@ const CurrClasses = ({classes, allClasses}) => {
               <AddClasses classes={classes} allClasses={allClasses}/>
             </ButtonGroup>
 
-            <Modal show={showLog} onHide={handleClose}>
+            <Modal show={showLog} onHide={handleClose} data-cy="modal">
               <Modal.Header closeButton>
                 <Modal.Title>Enter hours spent to complete this assignment:</Modal.Title>
               </Modal.Header>
@@ -103,7 +103,7 @@ const CurrClasses = ({classes, allClasses}) => {
                 </Form>
               </Modal.Body>
               <Modal.Footer>
-                <Button onClick={() => handleSubmit(logItem)} variant="success">
+                <Button data-dy="submit" onClick={() => handleSubmit(logItem)} variant="success">
                   Submit
                 </Button>
               </Modal.Footer>
