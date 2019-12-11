@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { render } from '@testing-library/react';
+import React from 'react';
+import { render, getByTestId, fireEvent } from '@testing-library/react';
 import Graph from './Graph.js';
 
 describe('Graph', () => {
@@ -11,7 +11,18 @@ describe('Graph', () => {
   classes = classes.courses;
   let setClasses = jest.fn();
 
-  it('renders Graph', () => {
-    const {getByText, getByTestId, container} = render(<Graph key={classes.title} state={{classes, setClasses}}/>);
+  // renders
+  test('renders Graph', () => {
+    const {getByTestId} = render(<Graph key={classes.title} state={{classes, setClasses}}/>);
   });
+  
+  // interaction
+  test('clicking on Individual Times switches graph to Scatter', () => {
+    const {getByTestId} = render(<Graph key={classes.title} state={{classes, setClasses}}/>);
+    fireEvent.click(getByTestId('graphDropdownButton'));
+    fireEvent.click(getByTestId('individualTimesButton')); // why can't it find this?
+    expect(getByTestId('chartContainer')).toBeTruthy();
+    expect(getByTestId('chartContainer').firstChild.chartType).toBe('ColumnChart');
+  });
+
 });

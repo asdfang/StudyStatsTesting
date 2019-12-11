@@ -117,11 +117,11 @@ const Graph = ({state}) => {
       <Card border="light">
         <Card.Body>
           <Card.Title><h3>Upcoming Week</h3></Card.Title>
-          <DropdownButton className="dropdownButton" title="Select Chart Type">
+          <DropdownButton className="dropdownButton" title="Select Chart Type" data-testid="graphDropdownButton">
             <Dropdown.Item onClick={() => setBar(true)}>Median Times</Dropdown.Item>
-            <Dropdown.Item onClick={() => setBar(false)}>Individual Times</Dropdown.Item>
+            <Dropdown.Item onClick={() => setBar(false)} data-testid="individualTimesButton">Individual Times</Dropdown.Item>
           </DropdownButton>
-          <div className={"my-pretty-chart-container"}>
+          <div className={"my-pretty-chart-container"} data-testid="chartContainer">
             {useBar ?
             <Chart
               chartType="ColumnChart"
