@@ -117,11 +117,11 @@ const Graph = ({state}) => {
       <Card border="light">
         <Card.Body>
           <Card.Title><h3>Upcoming Week</h3></Card.Title>
-          <DropdownButton className="dropdownButton" title="Select Chart Type" data-testid="graphDropdownButton">
+          <DropdownButton className="dropdownButton" title="Select Chart Type" data-testid="graphDropdownButton" data-cy="graphDropdownButton">
             <Dropdown.Item onClick={() => setBar(true)}>Median Times</Dropdown.Item>
-            <Dropdown.Item onClick={() => setBar(false)} data-testid="individualTimesButton">Individual Times</Dropdown.Item>
+            <Dropdown.Item onClick={() => setBar(false)} data-testid="individualTimesButton" data-cy="individualTimesButton">Individual Times</Dropdown.Item>
           </DropdownButton>
-          <div className={"my-pretty-chart-container"} data-testid="chartContainer">
+          <div className={"my-pretty-chart-container"} data-testid="chartContainer" data-cy="chartContainer">
             {useBar ?
             <Chart
               chartType="ColumnChart"
@@ -130,6 +130,7 @@ const Graph = ({state}) => {
               width="100%"
               height="300px"
               legendToggle
+              data-cy="barChart"
             /> :
             <Chart
               chartType="ScatterChart"
@@ -137,7 +138,8 @@ const Graph = ({state}) => {
               options={options}
               width="100%"
               height="300px"
-              legendToggle/>}
+              legendToggle
+              data-cy="scatterChart"/>}
           </div>
         </Card.Body>
       </Card>
